@@ -1,8 +1,10 @@
 from rest_framework import serializers
-from .models import *
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
 
-class ContactSerializer(serializers.ModelSerializer):
-	class Meta:
-		model = Contact
-		fields = ('name', 'surname', 'id')
+from .models import Snippet
 
+class SnippetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Snippet
+        fields = ('id', 'title', 'code', 'linenos',)
