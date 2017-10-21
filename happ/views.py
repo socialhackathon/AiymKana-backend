@@ -3,6 +3,7 @@ from .serializers import *
 from .permisions import *
 
 from django.http import Http404
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, mixins, generics
@@ -15,16 +16,18 @@ from rest_framework.authtoken.views import ObtainAuthToken
 
 class FriendList(generics.ListCreateAPIView):
     serializer_class = FriendSerializer
-    permission_classes = (IsAuthenticated,)
+    queryset = Friend.objects.all()
+    # need to implement authentification -----
+    # permission_classes = (IsAuthenticated,)
 
-    def get_queryset(self):
-        qset = Friend.objects.filter(contact=self.request.user)
-        return qset
+    # def get_queryset(self):
+    #     qset = Friend.objects.filter(contact=self.request.user)
+    #     return qset
 
 
 class FriendDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = FriendSerializer
-    permission_classes = (IsAuthenticated, IsOwner)
+    # permission_classes = (IsAuthenticated, IsOwner)
     queryset = Friend.objects.all()
 
 
@@ -69,6 +72,23 @@ class EmergencyServiceCategoryDetail(generics.RetrieveAPIView):
     queryset = EmergencyServiceCategory.objects.all()
     serializer_class = EmergencyServiceCategorySerializer
 
+
+class ServicesByCategoryList(generics.ListAPIView):
+    serializer_class = EmergencyServiceSerializer
+
+    def get_queryset(self):
+        cat = get_object_or_404(EmergencyServiceCategory, pk = self.kwargs['pk'])
+        qset = EmergencyService.objects.filter(category = cat)
+        return qset
+
+
+class FriendsByProfileList(generics.ListAPIView):
+    serializer_class = FriendSerializer
+
+    def get_queryset(self):
+        con = get_object_or_404(UserProfile, pk = self.kwargs['pk'])
+        qset = Friend.objects.filter(contact = con)
+        return qset
 
 '''
 class SnippetDetail(APIView):

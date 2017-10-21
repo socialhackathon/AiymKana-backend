@@ -17,6 +17,9 @@ urlpatterns = [
 
     url(r'^categories/$', views.EmergencyServiceCategoryList.as_view()),
     url(r'^categories/(?P<pk>[0-9]+)/$', views.EmergencyServiceCategoryDetail.as_view()),
+
+    url(r'^servicesByCat/(?P<pk>[0-9]+)/$', views.ServicesByCategoryList.as_view()),
+    url(r'^friendsByProfile/(?P<pk>[0-9]+)/$', views.FriendsByProfileList.as_view()),
     # url(r'', include(router.urls)),
     # url(r'^persons/$', views.PersonList.as_view()),
 ]

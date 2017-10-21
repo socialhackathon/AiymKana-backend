@@ -8,7 +8,7 @@ from .models import *
 class EmergencyServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = EmergencyService
-        fields = ('id', 'name', 'category', 'phone_1', 'address', 'longitude', 'latitude', 'phone_2', 'description')
+        fields = ('id', 'name', 'category', 'phone_1', 'address', 'longitude', 'latitude', 'phone_2', 'description', 'website')
 
 
 class EmergencyServiceCategorySerializer(serializers.ModelSerializer):
@@ -23,7 +23,8 @@ class FriendSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'phone')
 
     def create(self, validated_data):
-        contact = self.context['request'].user
+        # contact = self.context['request'].user
+        contact = UserProfile.objects.first()
         validated_data['contact'] = contact
         return super().create(validated_data)
 
@@ -33,7 +34,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserProfile
-        fields = ('id', 'phone_number', 'first_name', 'last_name', 'is_male', 'password', 'email')
+        fields = ('id', 'phone_number', 'first_name', 'last_name', 'password', 'email', 'message_text')
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):

@@ -46,8 +46,8 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     phone_number = models.CharField(max_length=13, unique=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    is_male = models.BooleanField(default=False)  # по дефолту в поле стоит "Ж"
     email = models.CharField(max_length=100, null=True)
+    message_text = models.CharField(max_length=300, default='SOS')
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -69,13 +69,14 @@ class EmergencyServiceCategory(models.Model):
 
 
 class EmergencyService(models.Model):
-    name = models.CharField(max_length=225)
-    address = models.CharField(max_length=225, null=True)
-    longitude = models.CharField(max_length=30,null=True)
-    latitude = models.CharField(max_length=30, null=True)
-    phone_1 = models.CharField(max_length=100)
-    phone_2 = models.CharField(max_length=100, null=True)
-    description = models.TextField(null=True)
+    name = models.CharField(max_length=300)
+    address = models.CharField(max_length=300, null=True)
+    longitude = models.CharField(max_length=30,null=True, blank=True)
+    latitude = models.CharField(max_length=30, null=True, blank=True)
+    phone_1 = models.CharField(max_length=100, null=True, blank=True)
+    phone_2 = models.CharField(max_length=100, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    website = models.CharField(max_length=200, null=True, blank=True)
 
     category = models.ForeignKey(EmergencyServiceCategory, on_delete=models.CASCADE)
 
@@ -86,6 +87,7 @@ class EmergencyService(models.Model):
 class Friend(models.Model):
     name = models.CharField(max_length=225)
     phone = models.CharField(max_length=225)
+    email = models.CharField(max_length=225, null=True, blank=True)
     contact = models.ForeignKey(UserProfile, related_name='contacts', on_delete=models.CASCADE)
 
     def __str__(self):
