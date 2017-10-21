@@ -23,6 +23,9 @@ urlpatterns = [
     url(r'^stories/$', views.StoryList.as_view()),
     url(r'^stories/(?P<pk>[0-9]+)/$', views.StoryDetail.as_view()),
 
+    url(r'^pins/$', views.PinList.as_view()),
+    url(r'^pins/(?P<pk>[0-9]+)/$', views.PinDetail.as_view()),
+
 
     # url(r'', include(router.urls)),
     # url(r'^persons/$', views.PersonList.as_view()),

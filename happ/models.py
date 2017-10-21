@@ -110,3 +110,12 @@ class Story(models.Model):
 
     def __str__(self):
         return self.title
+
+class Pin(models.Model):
+    info = models.CharField(max_length=300)
+    latitude = models.CharField(max_length=30)
+    longitude = models.CharField(max_length=30)
+    added_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return 'Longitude: {} Latitude {}'.format(self.longitude, self.latitude)

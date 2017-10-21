@@ -8,7 +8,7 @@ from .models import *
 class EmergencyServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = EmergencyService
-        fields = ('id', 'name', 'category', 'phone_1', 'address', 'longitude', 'latitude', 'phone_2', 'description', 'website')
+        fields = ('id', 'name', 'category', 'phone_1', 'address', 'latitude', 'longitude', 'phone_2', 'description', 'website')
 
 
 class EmergencyServiceCategorySerializer(serializers.ModelSerializer):
@@ -33,6 +33,12 @@ class StorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Story
         fields = ('id', 'title', 'body', 'timeAdded', 'profileNum')
+
+
+class PinSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pin
+        fields = ('info', 'id', 'latitude', 'longitude', 'added_at')
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
