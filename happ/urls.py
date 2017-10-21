@@ -8,9 +8,8 @@ router.register('profile', views.UserProfileViewSet)
 router.register('login', views.LoginViewSet, base_name='login')
 
 urlpatterns = [
-    url(r'^friends/$', views.FriendList.as_view()),
-    url(r'^friends/(?P<pk>[0-9]+)/$', views.FriendDetail.as_view()),
-    url(r'^friends/(?P<pk>[0-9]+)/$', views.FriendDetail.as_view()),
+    url(r'^contacts/$', views.FriendList.as_view()),
+    url(r'^contacts/(?P<pk>[0-9]+)/$', views.FriendDetail.as_view()),
 
     url(r'^services/$', views.ServiceList.as_view()),
     url(r'^services/(?P<pk>[0-9]+)/$', views.ServiceDetail.as_view()),
@@ -19,7 +18,7 @@ urlpatterns = [
     url(r'^categories/(?P<pk>[0-9]+)/$', views.EmergencyServiceCategoryDetail.as_view()),
 
     url(r'^servicesByCat/(?P<pk>[0-9]+)/$', views.ServicesByCategoryList.as_view()),
-    url(r'^friendsByProfile/(?P<pk>[0-9]+)/$', views.FriendsByProfileList.as_view()),
+    url(r'^contactsByProfile/(?P<pk>[0-9]+)/$', views.FriendsByProfileList.as_view()),
     # url(r'', include(router.urls)),
     # url(r'^persons/$', views.PersonList.as_view()),
 ]

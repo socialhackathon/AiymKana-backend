@@ -85,10 +85,10 @@ class EmergencyService(models.Model):
 
 
 class Friend(models.Model):
-    name = models.CharField(max_length=225)
+    name = models.CharField(max_length=225, null=True, blank=True)
     phone = models.CharField(max_length=225)
     email = models.CharField(max_length=225, null=True, blank=True)
-    contact = models.ForeignKey(UserProfile, related_name='contacts', on_delete=models.CASCADE)
+    profile = models.ForeignKey(UserProfile, related_name='contacts', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

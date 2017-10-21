@@ -20,7 +20,7 @@ class EmergencyServiceCategorySerializer(serializers.ModelSerializer):
 class FriendSerializer(serializers.ModelSerializer):
     class Meta:
         model = Friend
-        fields = ('id', 'name', 'phone')
+        fields = ('id', 'name', 'phone', 'email', 'profile')
 
     def create(self, validated_data):
         # contact = self.context['request'].user
