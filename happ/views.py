@@ -87,7 +87,7 @@ class FriendsByProfileList(generics.ListAPIView):
 
     def get_queryset(self):
         con = get_object_or_404(UserProfile, pk = self.kwargs['pk'])
-        qset = Friend.objects.filter(contact = con)
+        qset = Friend.objects.filter(profile = con)
         return qset
 
 '''

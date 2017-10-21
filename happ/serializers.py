@@ -25,7 +25,7 @@ class FriendSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         # contact = self.context['request'].user
         contact = UserProfile.objects.first()
-        validated_data['contact'] = contact
+        validated_data['profile'] = contact
         return super().create(validated_data)
 
 
