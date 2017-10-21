@@ -29,6 +29,12 @@ class FriendSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
 
+class StorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Story
+        fields = ('id', 'title', 'body', 'timeAdded', 'profileNum')
+
+
 class UserProfileSerializer(serializers.ModelSerializer):
     """A serializer for our UserProfile model"""
 

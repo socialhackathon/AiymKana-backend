@@ -90,5 +90,23 @@ class Friend(models.Model):
     email = models.CharField(max_length=225, null=True, blank=True)
     profile = models.ForeignKey(UserProfile, related_name='contacts', on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name = 'contact'
+
     def __str__(self):
         return self.name
+
+
+class Story(models.Model):
+    title = models.CharField(max_length=300)
+    body = models.TextField()
+    timeAdded = models.DateTimeField(auto_now_add=True)
+
+    # profile = models.ForeignKey(UserProfile, related_name='stories', on_delete=models.CASCADE, null=True, blank=True)
+    profileNum = models.IntegerField(null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = 'stories'
+
+    def __str__(self):
+        return self.title

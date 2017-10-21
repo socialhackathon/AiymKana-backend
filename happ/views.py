@@ -77,8 +77,8 @@ class ServicesByCategoryList(generics.ListAPIView):
     serializer_class = EmergencyServiceSerializer
 
     def get_queryset(self):
-        cat = get_object_or_404(EmergencyServiceCategory, pk = self.kwargs['pk'])
-        qset = EmergencyService.objects.filter(category = cat)
+        cat = get_object_or_404(EmergencyServiceCategory, pk=self.kwargs['pk'])
+        qset = EmergencyService.objects.filter(category=cat)
         return qset
 
 
@@ -86,9 +86,20 @@ class FriendsByProfileList(generics.ListAPIView):
     serializer_class = FriendSerializer
 
     def get_queryset(self):
-        con = get_object_or_404(UserProfile, pk = self.kwargs['pk'])
-        qset = Friend.objects.filter(profile = con)
+        con = get_object_or_404(UserProfile, pk=self.kwargs['pk'])
+        qset = Friend.objects.filter(profile=con)
         return qset
+
+
+class StoryList(generics.ListCreateAPIView):
+    serializer_class = StorySerializer
+    queryset = Story.objects.all()
+
+
+class StoryDetail(generics.RetrieveAPIView):
+    serializer_class = StorySerializer
+    queryset = Story.objects.all()
+
 
 '''
 class SnippetDetail(APIView):
