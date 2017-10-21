@@ -50,6 +50,26 @@ class LoginViewSet(viewsets.ViewSet):
         return ObtainAuthToken().post(request)
 
 
+class ServiceList(generics.ListAPIView):
+    queryset = EmergencyService.objects.all()
+    serializer_class = EmergencyServiceSerializer
+
+
+class ServiceDetail(generics.RetrieveAPIView):
+    queryset = EmergencyService.objects.all()
+    serializer_class = EmergencyServiceSerializer
+
+
+class EmergencyServiceCategoryList(generics.ListAPIView):
+    queryset = EmergencyServiceCategory.objects.all()
+    serializer_class = EmergencyServiceCategorySerializer
+
+
+class EmergencyServiceCategoryDetail(generics.RetrieveAPIView):
+    queryset = EmergencyServiceCategory.objects.all()
+    serializer_class = EmergencyServiceCategorySerializer
+
+
 '''
 class SnippetDetail(APIView):
     """

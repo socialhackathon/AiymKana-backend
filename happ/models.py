@@ -57,12 +57,27 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'phone_number'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'is_male']
 
+class EmergencyServiceCategory(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(null=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'emergency service categories'
+
 
 class EmergencyService(models.Model):
     name = models.CharField(max_length=225)
-    address = models.CharField(max_length=225)
-    phone = models.CharField(max_length=100)
+    address = models.CharField(max_length=225, null=True)
+    longitude = models.CharField(max_length=30,null=True)
+    latitude = models.CharField(max_length=30, null=True)
+    phone_1 = models.CharField(max_length=100)
+    phone_2 = models.CharField(max_length=100, null=True)
     description = models.TextField(null=True)
+
+    category = models.ForeignKey(EmergencyServiceCategory, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

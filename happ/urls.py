@@ -10,6 +10,14 @@ router.register('login', views.LoginViewSet, base_name='login')
 urlpatterns = [
     url(r'^friends/$', views.FriendList.as_view()),
     url(r'^friends/(?P<pk>[0-9]+)/$', views.FriendDetail.as_view()),
+    url(r'^friends/(?P<pk>[0-9]+)/$', views.FriendDetail.as_view()),
+
+    url(r'^services/$', views.ServiceList.as_view()),
+    url(r'^services/(?P<pk>[0-9]+)/$', views.ServiceDetail.as_view()),
+
+    url(r'^categories/$', views.EmergencyServiceCategoryList.as_view()),
+    url(r'^categories/(?P<pk>[0-9]+)/$', views.EmergencyServiceCategoryDetail.as_view()),
+    # url(r'', include(router.urls)),
     # url(r'^persons/$', views.PersonList.as_view()),
 ]
 
@@ -22,7 +30,3 @@ urlpatterns += [
 # urlpatterns += [
 #     url(r'^api-auth/', include('rest_framework.urls',namespace='rest_framework')),
 # ]
-
-
-
-

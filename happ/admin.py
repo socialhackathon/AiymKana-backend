@@ -5,5 +5,6 @@ from .models import *
 
 # admin.site.register(Snippet)
 admin.site.register(EmergencyService)
+admin.site.register(EmergencyServiceCategory)
 admin.site.register(Friend)
 admin.site.register(UserProfile)

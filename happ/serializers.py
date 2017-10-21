@@ -5,10 +5,16 @@ from rest_framework.parsers import JSONParser
 from .models import *
 
 
-# class PersonSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Person
-#         fields = ('id', 'username', 'first_name', 'last_name', 'middlename', 'email', 'phone')
+class EmergencyServiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EmergencyService
+        fields = ('id', 'name', 'category', 'phone_1', 'address', 'longitude', 'latitude', 'phone_2', 'description')
+
+
+class EmergencyServiceCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EmergencyServiceCategory
+        fields = ('id', 'name', 'description')
 
 
 class FriendSerializer(serializers.ModelSerializer):
@@ -46,3 +52,8 @@ class UserProfileSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+# class PersonSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Person
+#         fields = ('id', 'username', 'first_name', 'last_name', 'middlename', 'email', 'phone')
