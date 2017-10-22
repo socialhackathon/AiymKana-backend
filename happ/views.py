@@ -100,6 +100,7 @@ class StoryDetail(generics.RetrieveAPIView):
     serializer_class = StorySerializer
     queryset = Story.objects.all()
 
+
 class PinList(generics.ListCreateAPIView):
     serializer_class = PinSerializer
     queryset = Pin.objects.all()
@@ -108,6 +109,17 @@ class PinList(generics.ListCreateAPIView):
 class PinDetail(generics.RetrieveAPIView):
     serializer_class = PinSerializer
     queryset = Pin.objects.all()
+
+
+class InformationList(generics.ListCreateAPIView):
+    serializer_class = InformationSerializer
+    queryset = Information.objects.all()
+
+
+class InformationDetail(generics.RetrieveAPIView):
+    serializer_class = InformationSerializer
+    queryset = Information.objects.all()
+
 
 '''
 class SnippetDetail(APIView):

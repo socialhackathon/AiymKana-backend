@@ -71,8 +71,8 @@ class EmergencyServiceCategory(models.Model):
 class EmergencyService(models.Model):
     name = models.CharField(max_length=300)
     address = models.CharField(max_length=300, null=True)
-    longitude = models.CharField(max_length=30,null=True, blank=True)
     latitude = models.CharField(max_length=30, null=True, blank=True)
+    longitude = models.CharField(max_length=30,null=True, blank=True)
     phone_1 = models.CharField(max_length=100, null=True, blank=True)
     phone_2 = models.CharField(max_length=100, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
@@ -119,3 +119,15 @@ class Pin(models.Model):
 
     def __str__(self):
         return 'Longitude: {} Latitude {}'.format(self.longitude, self.latitude)
+
+class Information(models.Model):
+    title = models.CharField(max_length=100)
+    image_url = models.URLField()
+    body = models.TextField()
+    last_updated = models.DateField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = 'information'
+
+    def __str__(self):
+        return self.title

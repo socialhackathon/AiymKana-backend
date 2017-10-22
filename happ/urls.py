@@ -26,6 +26,8 @@ urlpatterns = [
     url(r'^pins/$', views.PinList.as_view()),
     url(r'^pins/(?P<pk>[0-9]+)/$', views.PinDetail.as_view()),
 
+    url(r'^infos/$', views.InformationList.as_view()),
+    url(r'^infos/(?P<pk>[0-9]+)/$', views.InformationDetail.as_view()),
 
     # url(r'', include(router.urls)),
     # url(r'^persons/$', views.PersonList.as_view()),

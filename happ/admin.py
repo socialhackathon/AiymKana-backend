@@ -30,9 +30,14 @@ class PinAdmin(admin.ModelAdmin):
     list_display = ('info', 'id', 'latitude', 'longitude')
 
 
+class InformationAdmin(admin.ModelAdmin):
+    list_display = ('title', 'id', 'image_url', 'last_updated')
+
+
 admin.site.register(EmergencyService, EmergencyServiceAdmin)
 admin.site.register(EmergencyServiceCategory, EmergencyServiceCategoryAdmin)
 admin.site.register(Friend, FriendAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(Story, StoryAdmin)
 admin.site.register(Pin, PinAdmin)
+admin.site.register(Information, InformationAdmin)
