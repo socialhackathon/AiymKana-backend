@@ -1,16 +1,5 @@
-# AiymKana-backend
+# AiymKana Backend
 
-This project is done using the Django Framework
-
-The required packages are listed in the Pipfile
-
-# Installation
-
-pip install pipenv
-
-'pipenv install' installs all dependencies
-
-Aimkana Backend
 =======================
 
 This project is done using the Django Framework
@@ -24,34 +13,44 @@ Installed apps:
 * mysqlclient
 * djangorestframework
 
+Prerequisites
+-------------
+
+- Python >= 3.6
+- pip
+
 Usage
 -----
 
-Create a Django project:
+Clone the repository
 
 .. code-block:: bash
 
-    mkdir dir_name
-    cd dir_name
-    django-admin.py startproject hack
+    git clone https://github.com/socialhackathon/AiymKana-backend.git
 
 Install dependencies
+
+Pipenv locates the Pipfile, create a new virtual environment and install the necessary packages.
 
 .. code-block:: bash
 
     pip install pipenv
 	pipenv install
 
-Pipenv locates the Pipfiles, create a new virtual environment and install the necessary packages.
 
-Prerequisites
--------------
+Migrate the data to the database
+The default database used is sqlite
 
-- Python >= 3.6
-- pip
-- virtualenv (virtualenvwrapper is recommended)
+.. code-block:: bash
 
-Installation
-------------
-	pipenv run ./manage.py migrate
-	pipenv run ./manage.py runserver
+    pipenv run python manage.py migrate
+    # creates the tables in the database specified in settings.py file
+    
+    pipenv run python manage.py createsuperuser
+    # creates profile for admin page with superuser privilegies
+    
+    pipenv run python manage.py makemigrations
+    pipenv run python manage.py migrate
+    pipenv run python manage.py runserver
+
+

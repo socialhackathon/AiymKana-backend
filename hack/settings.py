@@ -25,15 +25,14 @@ SECRET_KEY = 'le9lrh5-zm%d9px_)&x!sxxk8dkj6h68n_^=y&s&7b8r0-5hg&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['165.227.147.84', '127.0.0.1']
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
-	'happ.apps.HappConfig',
-	'rest_framework',
+    'happ.apps.HappConfig',
+    'rest_framework',
     'rest_framework.authtoken',
 
     'django.contrib.admin',
@@ -78,14 +77,7 @@ WSGI_APPLICATION = 'hack.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-# 	'OPTIONS': {
-#         'read_default_file': '/etc/mysql/my.cnf',
-# 	},
-#     }
-# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

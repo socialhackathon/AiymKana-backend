@@ -1,6 +1,4 @@
 from rest_framework import serializers
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
 
 from .models import *
 
@@ -8,7 +6,8 @@ from .models import *
 class EmergencyServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = EmergencyService
-        fields = ( 'id', 'name', 'category', 'phone_1', 'address', 'latitude', 'longitude', 'phone_2', 'description', 'website')
+        fields = (
+        'id', 'name', 'category', 'phone_1', 'address', 'latitude', 'longitude', 'phone_2', 'description', 'website')
 
 
 class EmergencyServiceCategorySerializer(serializers.ModelSerializer):
@@ -23,7 +22,6 @@ class FriendSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'phone', 'email', 'profile')
 
     def create(self, validated_data):
-        # contact = self.context['request'].user
         contact = UserProfile.objects.first()
         validated_data['profile'] = contact
         return super().create(validated_data)

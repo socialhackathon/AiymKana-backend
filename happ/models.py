@@ -102,7 +102,6 @@ class Story(models.Model):
     body = models.TextField()
     timeAdded = models.DateTimeField(auto_now_add=True)
 
-    # profile = models.ForeignKey(UserProfile, related_name='stories', on_delete=models.CASCADE, null=True, blank=True)
     profileNum = models.IntegerField(null=True, blank=True)
 
     class Meta:

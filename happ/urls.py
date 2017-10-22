@@ -1,5 +1,4 @@
 from django.conf.urls import url, include
-from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework.routers import DefaultRouter
 from . import views
 
@@ -28,17 +27,8 @@ urlpatterns = [
 
     url(r'^infos/$', views.InformationList.as_view()),
     url(r'^infos/(?P<pk>[0-9]+)/$', views.InformationDetail.as_view()),
-
-    # url(r'', include(router.urls)),
-    # url(r'^persons/$', views.PersonList.as_view()),
 ]
-
-# urlpatterns = format_suffix_patterns(urlpatterns)
 
 urlpatterns += [
     url(r'', include(router.urls))
 ]
-
-# urlpatterns += [
-#     url(r'^api-auth/', include('rest_framework.urls',namespace='rest_framework')),
-# ]
