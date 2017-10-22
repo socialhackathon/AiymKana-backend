@@ -2,6 +2,8 @@
 
 The backend part of the AiymKana application aimed to provide useful information and help regarding the violence for the vulnerable social groups 
 
+It provides the data for the mobile app through the Django REST Framework API
+
 Prerequisites
 -------------
 
